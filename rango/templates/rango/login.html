@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Task Manager</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Student Task Manager</a>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h1 class="card-title text-center mb-4">Log In</h1>
+                        {% if error %}
+                            <div class="alert alert-danger">
+                                {{ error }}
+                            </div>
+                        {% endif %}
+                        <form method="POST">
+                            {% csrf_token %}
+                        
+                            <div class="mb-3">
+                                <label class="form-label">Username or Email</label>
+                                <input type="text" name="username" class="form-control" required>
+                            </div>
+                        
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                        
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    Confirm Login
+                                </button>
+                        
+                                <a href="/rango/register/" class="btn btn-outline-secondary">
+                                    Register Now
+                                </a>
+                            </div>
+                        
+                            <div class="text-center mt-3">
+                                <a href="{% url 'rango:change_password' %}">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/interactive.js' %}"></script>
+</body>
+</html>
