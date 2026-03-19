@@ -269,7 +269,6 @@ def change_password(request):
         try:
             user = User.objects.get(username=username)
 
-            # 验证旧密码
             if user.check_password(old_password):
                 user.set_password(new_password)
                 user.save()
