@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rango import views  
-app_name = 'rango'
+
 urlpatterns = [
     path('', views.view_courses, name='home'),  
     path('rango/', include('rango.urls')),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('register/', views.register, name='register'),
 ]
+
 
